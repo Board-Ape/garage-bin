@@ -1,19 +1,30 @@
-const showAllItems = (allItems) => {
-  allItems.forEach(item => {
+const showAllItems = (allSpaceItems) => {
+  allSpaceItems.map(item => {
     $('.items-container').append(`
-      <div class='item${item.id} item ${item.cleanliness}''>
+      <div id=${item.id} class='item${item.id} item ${item.cleanliness}'>
         <h2 class='item-name'>${item.name}</h2>
-      </div>`);
+        <button class='details-button'>Details</button>
+        <div class='item-details hidden'>
+          <p>Reason: ${item.reason}</p>
+          <h4>Cleanliness: </h4>
+          <select class="detail-drop-down" name="">
+            <option ${item.cleanliness === 'Sparkling' ? 'selected' : ''} value="Sparkling">Sparkling</option>
+            <option ${item.cleanliness === 'Dusty' ? 'selected' : ''} value="Dusty">Dusty</option>
+            <option ${item.cleanliness === 'Rancid' ? 'selected' : ''} value="Rancid">Rancid</option>
+          </select>
+        </div>
+      </div>
+    `);
   });
   totalCount();
 };
-let allItems;
+let allSpaceItems;
 
 const getAllItems = () => {
   fetch('/api/v1/items')
     .then(response => response.json())
     .then(items => {
-      allItems = items;
+      allSpaceItems = items;
       showAllItems(items);
     });
 };
@@ -40,7 +51,7 @@ const postItem = () => {
     .then(response => response.json())
     .then(items => {
       showAllItems(items);
-      allItems.push(items[0]);
+      allSpaceItems.push(items[0]);
       clearInputs();
     })
     .catch(error => console.log(error));
@@ -79,11 +90,11 @@ const sortItems = () => {
   if (buttonText === 'Sort A-Z') {
     $('.sort-button').text('Sort Z-A');
     $('.item').remove();
-    showAllItems(sortItemsAscending(allItems));
+    showAllItems(sortItemsAscending(allSpaceItems));
   } else {
     $('.sort-button').text('Sort A-Z');
     $('.item').remove();
-    showAllItems(sortItemsDescending(allItems));
+    showAllItems(sortItemsDescending(allSpaceItems));
   }
 };
 
@@ -108,7 +119,24 @@ const openGarage = () => {
   $('.open-button').remove();
 };
 
+const alterCleanliness = (event) => {
+  const newCleanliness = JSON.stringify({
+    cleanliness: event.target.value
+  });
+  const id = $(event.target).closest('.item').attr('id');
+
+  fetch(`/api/v1/items/${id}`, {
+    method: 'PATCH',
+    body: newCleanliness,
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+};
+
 $(document).ready(getAllItems);
 $('.submit-button').on('click', postItem);
 $('.open-button').on('click', openGarage);
 $('.sort-button').on('click', sortItems);
+$('.items-container').on('click', '.details-button', (event) => toggleDetails(event));
+$('.items-container').on('change', '.detail-drop-down', (event) => alterCleanliness(event));
