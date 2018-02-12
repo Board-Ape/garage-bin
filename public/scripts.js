@@ -99,6 +99,16 @@ const totalCount = () => {
   $('.rancid-count').text(rancidTotal);
 };
 
+const toggleDetails = (event) => {
+  $(event.target).siblings('.item-details').toggleClass('hidden');
+};
+
+const openGarage = () => {
+  $('.closed').addClass('roll-up');
+  $('.open-button').remove();
+};
+
 $(document).ready(getAllItems);
 $('.submit-button').on('click', postItem);
+$('.open-button').on('click', openGarage);
 $('.sort-button').on('click', sortItems);
