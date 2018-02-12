@@ -47,13 +47,13 @@ const postItem = () => {
 };
 
 const sortItemsAscending = (items) => {
-  return items.sort((a, b) => {
-    const nameA = a.name.toLowerCase();
-    const nameB = b.name.toLowerCase();
-    if (nameA < nameB) {
+  return items.sort((itemA, itemB) => {
+    const titleA = itemA.name.toLowerCase();
+    const titleB = itemB.name.toLowerCase();
+    if (titleA < titleB) {
       return -1;
     }
-    if (nameA > nameB) {
+    if (titleA > titleB) {
       return 1;
     }
     return 0;
@@ -61,13 +61,13 @@ const sortItemsAscending = (items) => {
 };
 
 const sortItemsDescending = (items) => {
-  return items.sort((a, b) => {
-    const nameA = a.name.toLowerCase();
-    const nameB = b.name.toLowerCase();
-    if (nameA < nameB) {
+  return items.sort((itemA, itemB) => {
+    const titleA = itemA.name.toLowerCase();
+    const titleB = itemB.name.toLowerCase();
+    if (titleA < titleB) {
       return 1;
     }
-    if (nameA > nameB) {
+    if (titleA > titleB) {
       return -1;
     }
     return 0;
