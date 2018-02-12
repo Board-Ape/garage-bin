@@ -1,0 +1,140 @@
+body {
+  background-color: #004b6e;
+  background-image: url("https://images.unsplash.com/photo-1506896278116-e5145485db11?ixlib=rb-0.3.5&s=8b64fe3d8b15a3e2a569821d9bd9efe4&auto=format&fit=crop&w=953&q=80");
+  font-family: 'Roboto', sans-serif;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: yellow;
+}
+
+h1 {
+  margin: 50px 0 30px 0;
+  font-size: 60px;
+  color: yellow;
+  text-shadow: 2px 2px 2px rgba(150, 150, 150, 1);
+}
+
+h3 {
+  margin: 20px 0 20px 0;
+}
+
+input {
+  height: 30px;
+  width: 200px;
+  font-size: 16px;
+  padding-left: 5px;
+}
+
+.drop-down {
+  width: 150px;
+  height: 30px;
+  font-size: 14px;
+}
+
+.submit-button {
+  height: 30px;
+  width: 60px;
+}
+
+.add-item {
+  margin-bottom: 30px;
+}
+
+.sort-button {
+  margin-top: 30px;
+  width: 300px;
+  height: 100px;
+  font-size: 40px;
+}
+
+.garage {
+  width: 90%;
+}
+
+.closed {
+  background-color: black;
+  border-radius: 10px;
+  background-image: url("https://images.unsplash.com/photo-1499626662328-b83a935441a4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1ee4be151f999b29476ba99a61c07d44&auto=format&fit=crop&w=1608&q=80");
+  width: 90%;
+  position: absolute;
+  margin-top: 20px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  transition: height 1500ms ease-in-out;
+}
+
+.open-up h1 {
+  cursor: pointer;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  transition: .5s ease;
+}
+
+.open-up h1:hover {
+  color: #004263;
+  transition: .5s ease;
+}
+
+.roll-up {
+  height: 10px;
+}
+
+.items-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.item {
+  border: 2px solid yellow;
+  border-radius: 100%;
+  background-color: silver;
+  background-image: url("https://www.transparenttextures.com/patterns/light-aluminum.png");
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 200px;
+  height: 350px;
+  margin: 20px;
+  text-align: center;
+}
+
+.item h2 {
+  margin: 70px 0 20px 0;
+}
+
+.item h3 {
+  margin: 10px 0 10px 0;
+}
+
+.item p {
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.item button {
+  background-color: #004263;
+  color: yellow;
+}
+
+
+.details-button {
+  width: 100px;
+  height: 30px;
+  font-size: 15px;
+  border: 2px solid white;
+  margin: 20px 0 20px 0;
+}
+
+.count-area {
+  margin-top: 40px;
+}
+
+.hidden {
+  display: none;
+}
