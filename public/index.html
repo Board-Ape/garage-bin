@@ -2,9 +2,40 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Space Bin</title>
   </head>
   <body>
-    Hello
+  <h1>Space Bin</h1>
+  <button class="sort-button">Sort Alphabetically</button>
+
+  <div class="garage">
+    <div class="closed">
+      <div class="open-up">
+        <h1 class="open-button">Open Space Door!</h1>
+      </div>
+    </div>
+    <div class="items-container">
+    </div>
+  </div>
+  <h3>Add Item</h3>
+  <div class="add-item">
+    <input class="name-input "type="text" name="" value="" placeholder="Name">
+    <input class="reason-input "type="text" name="" value="" placeholder="Reason">
+    <select class="drop-down" name="">
+      <option value="Sparkling">Sparkling</option>
+      <option value="Dusty">Dusty</option>
+      <option value="Rancid">Rancid</option>
+    </select>
+    <button class="submit-button" type="button" name="button">Add Item</button>
+  </div>
+  <div class="count-area">
+    <h2 class="item-count">Item Count: <span class='count'></span></h2>
+    <h3 class="item-count">Sparkling Items: <span class='sparkling-count'></span></h3>
+    <h3 class="item-count">Dusty Items: <span class='dusty-count'></span></h3>
+    <h3 class="item-count">Rancid Items: <span class='rancid-count'></span></h3>
+  </div>
+  <script src="scripts.js"></script>
   </body>
 </html>
