@@ -19,12 +19,23 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.set('port', process.env.PORT || 3000);
+app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.locals.title = 'Garage Bin';
 
-app.get('/', (request, response) => {
-  response.send('It\'s way too cold!');
+app.get('/api/v1/items', (request, response) => {
+  database('items').select()
+    .then((items) => {
+      response.status(200).json(items);
+    })
+    .catch((error) => {
+      response.status(500).json({ error });
+    });
 });
 
 app.listen(app.get('port'), () => {
   console.log(`${app.locals.title} is running on ${app.get('port')}.`);
 });
+
+module.exports = app;
