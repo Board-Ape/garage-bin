@@ -1,5 +1,3 @@
-let allItems;
-
 const showAllItems = (allItems) => {
   allItems.forEach(item => {
     $('.items-container').append(`
@@ -9,47 +7,7 @@ const showAllItems = (allItems) => {
   });
   totalCount();
 };
-
-const sortItemsAscending = (items) => {
-  return items.sort((a, b) => {
-    const nameA = a.name.toLowerCase();
-    const nameB = b.name.toLowerCase();
-    if (nameA < nameB) {
-      return -1;
-    }
-    if (nameA > nameB) {
-      return 1;
-    }
-    return 0;
-  });
-};
-
-const sortItemsDescending = (items) => {
-  return items.sort((a, b) => {
-    const nameA = a.name.toLowerCase();
-    const nameB = b.name.toLowerCase();
-    if (nameA < nameB) {
-      return -1;
-    }
-    if (nameA > nameB) {
-      return 1;
-    }
-    return 0;
-  });
-};
-
-const sortItems = () => {
-  const buttonText =  $('.sort-button').text();
-  if (buttonText === 'Sort A-Z') {
-    $('.sort-button').text('Sort Z-A');
-    $('.item').remove();
-    showAllItems(sortItemsAscending(allItems));
-  } else {
-    $('.sort-button').text('Sort A-Z');
-    $('.item').remove();
-    showAllItems(sortItemsDescending(allItems));
-  }
-};
+let allItems;
 
 const getAllItems = () => {
   fetch('/api/v1/items')
@@ -86,6 +44,47 @@ const postItem = () => {
       clearInputs();
     })
     .catch(error => console.log(error));
+};
+
+const sortItemsAscending = (items) => {
+  return items.sort((a, b) => {
+    const nameA = a.name.toLowerCase();
+    const nameB = b.name.toLowerCase();
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+    return 0;
+  });
+};
+
+const sortItemsDescending = (items) => {
+  return items.sort((a, b) => {
+    const nameA = a.name.toLowerCase();
+    const nameB = b.name.toLowerCase();
+    if (nameA < nameB) {
+      return 1;
+    }
+    if (nameA > nameB) {
+      return -1;
+    }
+    return 0;
+  });
+};
+
+const sortItems = () => {
+  const buttonText =  $('.sort-button').text();
+  if (buttonText === 'Sort A-Z') {
+    $('.sort-button').text('Sort Z-A');
+    $('.item').remove();
+    showAllItems(sortItemsAscending(allItems));
+  } else {
+    $('.sort-button').text('Sort A-Z');
+    $('.item').remove();
+    showAllItems(sortItemsDescending(allItems));
+  }
 };
 
 const totalCount = () => {
