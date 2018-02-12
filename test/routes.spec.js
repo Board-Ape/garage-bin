@@ -72,5 +72,16 @@ describe('API Routes', () => {
           throw error;
         });
     });
+
+    it('should return a 404 for a route that does not exist', () => {
+      return chai.request(server)
+        .get('/api/v1/unhappy')
+        .then(response => {
+          response.should.have.status(404);
+        })
+        .catch(error => {
+          throw error;
+        });
+    });
   });
 });
