@@ -123,4 +123,35 @@ describe('API Routes', () => {
         });
     });
   });
+
+  describe('PATCH /api/v1/items/:id', () => {
+    it('should patch an item in the database', () => {
+      chai.request(server)
+        .patch('/api/v1/items/1')
+        .send({
+          cleanliness: 'Sparkling'
+        })
+        .then(response => {
+          response.should.have.status(204);
+        })
+        .catch(error => {
+          throw error;
+        });
+    });
+
+    it('should return status 422 if project does not exist', () => {
+      chai.request(server)
+        .patch('/api/v1/items/910')
+        .send({
+          cleanliness: 'Sparkling'
+        })
+        .then(response => {
+          response.should.have.status(422);
+        })
+        .catch(error => {
+          throw error;
+        });
+    });
+  });
+
 });
