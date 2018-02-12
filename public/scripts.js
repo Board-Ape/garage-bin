@@ -1,10 +1,11 @@
 const showAllItems = (allItems) => {
   allItems.forEach(item => {
     $('.items-container').append(`
-      <div> id=${item.id} class='item${item.id}' item ${item.cleanliness}'>
+      <div class='item${item.id} item'>
         <h2 class='item-name'>${item.name}</h2>
       </div>`);
   });
+  totalCount();
 };
 
 const getAllItems = () => {
@@ -42,6 +43,10 @@ const postItem = () => {
     .catch(error => console.log(error));
 };
 
+const totalCount = () => {
+  const count = $('.item').length;
+  $('.count').text(count)
+};
 
 $(document).ready(getAllItems);
 $('.submit-button').on('click', postItem);
