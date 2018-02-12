@@ -1,7 +1,7 @@
 const showAllItems = (allItems) => {
   allItems.forEach(item => {
     $('.items-container').append(`
-      <div class='item${item.id} item'>
+      <div class='item${item.id} item ${item.cleanliness}''>
         <h2 class='item-name'>${item.name}</h2>
       </div>`);
   });
@@ -44,8 +44,15 @@ const postItem = () => {
 };
 
 const totalCount = () => {
-  const count = $('.item').length;
-  $('.count').text(count)
+  const itemTotal = $('.item').length;
+  const sparklingTotal = $('.Sparkling').length;
+  const dustyTotal = $('.Dusty').length;
+  const rancidTotal = $('.Rancid').length;
+
+  $('.count').text(itemTotal);
+  $('.sparkling-count').text(sparklingTotal);
+  $('.dusty-count').text(dustyTotal);
+  $('.rancid-count').text(rancidTotal);
 };
 
 $(document).ready(getAllItems);
