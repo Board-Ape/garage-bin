@@ -61,10 +61,10 @@ describe('API Routes', () => {
           response.body[0].should.have.property('id');
           response.body[0].id.should.equal(1);
           response.body[0].should.have.property('name');
-          response.body[0].should.have.property('reason');
-          response.body[0].should.have.property('cleanliness');
           response.body[0].name.should.equal('hockey pads');
+          response.body[0].should.have.property('reason');
           response.body[0].reason.should.equal('fast all the way');
+          response.body[0].should.have.property('cleanliness');
           response.body[0].cleanliness.should.equal('Rancid');
           done();
         })
@@ -76,6 +76,45 @@ describe('API Routes', () => {
     it('should return a 404 for a route that does not exist', () => {
       return chai.request(server)
         .get('/api/v1/unhappy')
+        .then(response => {
+          response.should.have.status(404);
+        })
+        .catch(error => {
+          throw error;
+        });
+    });
+  });
+
+  describe('POST /api/v1/items', () => {
+    it('should post a new item to the database', () => {
+      return chai.request(server)
+        .post('/api/v1/items')
+        .send({
+          name: 'Magic Wand',
+          reason: 'For Hogwarts',
+          cleanliness: 'Sparkling'
+        })
+        .then(response => {
+          response.should.have.status(201);
+          response.should.be.json;
+          response.body.should.be.a('array');
+          response.body[0].should.have.property('id');
+          response.body[0].id.should.equal(4);
+          response.body[0].should.have.property('name');
+          response.body[0].name.should.equal('Magic Wand');
+          response.body[0].should.have.property('reason');
+          response.body[0].reason.should.equal('For Hogwarts');
+          response.body[0].should.have.property('cleanliness');
+          response.body[0].cleanliness.should.equal('Sparkling');
+        })
+        .catch(error => {
+          throw error;
+        });
+    });
+
+    it('should return a 404 for a route that does not exist', () => {
+      return chai.request(server)
+        .post('/api/v1/items/unhappy')
         .then(response => {
           response.should.have.status(404);
         })
