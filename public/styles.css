@@ -69,8 +69,6 @@ input {
 .open-up h1 {
   cursor: pointer;
   border: none;
-  padding: 10px;
-  border-radius: 10px;
   transition: .5s ease;
 }
 
@@ -80,10 +78,15 @@ input {
 }
 
 .roll-up {
-  height: 10px;
+  height: 80px;
+}
+
+.roll-down {
+  height: 100vh
 }
 
 .items-container {
+  margin-top: 100px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -122,6 +125,10 @@ input {
   color: yellow;
 }
 
+.open-button {
+  margin: 30px;
+  font-size: 20px;
+}
 
 .details-button {
   width: 100px;
