@@ -4,7 +4,7 @@ const showAllItems = (allSpaceItems) => {
       <div id=${item.id} class='item${item.id} item ${item.cleanliness}'>
         <h2 class='item-name'>${item.name}</h2>
         <button class='details-button'>Details</button>
-        <div class='item-details hidden'>
+        <div class='details hidden'>
           <p>Reason: ${item.reason}</p>
           <h4>Cleanliness: </h4>
           <select class="detail-drop-down" name="">
@@ -111,7 +111,7 @@ const totalCount = () => {
 };
 
 const toggleDetails = (event) => {
-  $(event.target).siblings('.item-details').toggleClass('hidden');
+  $(event.target).siblings('.details').toggleClass('hidden');
 };
 
 const openGarage = () => {
