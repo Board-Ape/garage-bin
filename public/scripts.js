@@ -115,8 +115,14 @@ const toggleDetails = (event) => {
 };
 
 const openGarage = () => {
-  $('.closed').addClass('roll-up');
-  $('.open-button').remove();
+  const garageButton = $('.open-button').text();
+  if (garageButton === 'Open Space Door!') {
+    $('.open-button').text('Close Space Door!');
+    $('.closed').addClass('roll-up');
+  } else {
+    $('.open-button').text('Open Space Door!');
+    $('.closed').addClass('roll-down');
+  }
 };
 
 const alterCleanliness = (event) => {
